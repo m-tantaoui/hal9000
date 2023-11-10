@@ -1,0 +1,8 @@
+/.eggs
+/.hal3.12
+/src/hal.egg-info
+
+/target
+*.so
+Cargo.lock
+*.pyc

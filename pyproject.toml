@@ -1,0 +1,52 @@
+[project]
+name = "hal"
+version = "0.0.1"
+description = "Deep Learning using Numpy in Python and Rust" 
+readme = "README.md"
+requires-python = ">=3.8"
+license = {file = "LICENSE.txt"}
+keywords = ["deepLearning", "python", "rust"] 
+authors = [
+  {name = "mohamed al mahdi tantaoui", email = "mohamedalmahdi.tantaoui@gmail.com" } 
+]
+maintainers = [
+  {name = "mohamed al mahdi tantaoui", email = "mohamedalmahdi.tantaoui@gmail.com" } 
+]
+classifiers = [  
+  "Development Status :: 3 - Alpha",
+
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Build Tools",
+
+  "License :: OSI Approved :: MIT License",
+
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3 :: Only",
+]
+dependencies = [ 
+  "numpy"
+]
+
+[project.optional-dependencies] 
+dev = ["mypy", "pytest", "black", "coverage", "flake8"]
+test = ["coverage"]
+
+
+[project.urls]  
+"Homepage" = "https://github.com/mahtantaoui/hal"
+"Bug Reports" = "https://github.com/mahtantaoui/hal/issues"
+# "Funding" = ""
+# "Say Thanks!" = ""
+"Source" = "https://github.com/mahtantaoui/hal"
+
+[project.scripts]  # Optional
+hal = "hal:main"
+
+[build-system]
+requires = ["setuptools", "setuptools-rust", "wheel"]
+build-backend = "setuptools.build_meta"

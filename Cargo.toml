@@ -1,0 +1,18 @@
+[package]
+name = "hal"
+version = "0.0.1"
+edition = "2021"
+
+
+[lib]
+name = "hal_rs"
+crate-type = ["rlib", "cdylib"]
+
+
+[dependencies]
+pyo3 = {version="0.18.3", features = ["extension-module", "num-complex"]}
+rayon = "1.7.0"
+numpy = "0.18.0"
+num = "0.4.0"
+num-complex = "0.4.3"
+
