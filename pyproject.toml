@@ -33,7 +33,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies] 
-dev = ["mypy", "pytest", "black", "coverage", "flake8"]
+dev = ["mypy", "pytest", "black", "coverage", "flake8", "isort"]
 test = ["coverage"]
 
 

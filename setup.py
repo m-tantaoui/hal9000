@@ -1,9 +1,7 @@
-from setuptools import setup, dist
-
+from setuptools import dist, setup
 
 dist.Distribution().fetch_build_eggs(["setuptools_rust"])
 from setuptools_rust import Binding, RustExtension
-
 
 if __name__ == "__main__":
     setup(
