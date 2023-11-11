@@ -2,5 +2,5 @@
 
 <div style="text-align: center;">
 
-[![Alt text](./images/HAL9000.png)]
+![Alt text](./images/HAL9000.png)
 </div>
