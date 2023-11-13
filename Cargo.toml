@@ -15,7 +15,6 @@ rayon = "1.7.0"
 numpy = "0.20.0"
 num = "0.4.0"
 num-complex = "0.4.3"
-arrow= { version = "48.0.0", default-features = false, features = ["pyarrow", "simd"] }
 
 
 [toolchain]

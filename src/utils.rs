@@ -1,17 +1,9 @@
-use std::sync::Arc;
-
 use crate::array::PyArray1Wrapper;
 use crate::array::PyArray1Wrapper::*;
 
 use crate::array::PyArray2Wrapper;
 use crate::array::PyArray2Wrapper::*;
 
-use arrow::array::ArrayRef;
-use arrow::array::Datum;
-use arrow::array::{make_array, Array, ArrayData, Int32Array};
-use arrow::compute::kernels;
-use arrow::pyarrow::PyArrowType;
-use pyo3::exceptions::PyValueError;
 use pyo3::prelude::{pyfunction, PyResult, Python};
 
 #[pyfunction]
@@ -62,35 +54,4 @@ pub fn py_mat_type<'py>(_py: Python<'py>, py_vec: PyArray2Wrapper) -> PyResult<S
         Cplx64PyArray2(_) => "complex64".to_string(),
     };
     Ok(t)
-}
-
-#[pyfunction]
-#[pyo3(name = "add")]
-pub fn addition(array1: PyArrowType<ArrayData>, array2: PyArrowType<ArrayData>) -> PyResult<()> {
-    // Extract from PyArrowType wrapper
-    let array_data1 = array1.0;
-    let array_data2 = array2.0;
-
-    // Convert ArrayData to ArrayRef
-    let array_ref1: ArrayRef = make_array(array_data1);
-    let array_ref2: ArrayRef = make_array(array_data2);
-
-    // downcasting to int32
-    let array1 = array_ref1
-        .as_any()
-        .downcast_ref::<Int32Array>()
-        .expect("failed Downcasting PyArrow Array");
-
-    Ok(())
-
-    // let array2: &Int32Array = array_ref2
-    //     .as_any()
-    //     .downcast_ref()
-    //     .ok_or_else(|| PyValueError::new_err("expected int32 array"))?;
-
-    // let addition_result = kernels::numeric::add(array1, array2)
-    //     .expect("There is a problem with the Addition Kernel in Arrow");
-
-    // let addition = addition_result.get().0;
-    // Ok(PyArrowType(addition.to_data()))
 }
