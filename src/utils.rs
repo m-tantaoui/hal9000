@@ -28,8 +28,8 @@ pub fn py_vec_type<'py>(_py: Python<'py>, py_vec: PyArray1Wrapper) -> PyResult<S
         IntSizePyArray1(_) => "int_size".to_string(),
         Flt32PyArray1(_) => "float32".to_string(),
         Flt64PyArray1(_) => "float64".to_string(),
-        Cplx32PyArray1(_) => "complex32".to_string(),
-        Cplx64PyArray1(_) => "complex64".to_string(),
+        // Cplx32PyArray1(_) => "complex32".to_string(),
+        // Cplx64PyArray1(_) => "complex64".to_string(),
     };
     Ok(t)
 }
@@ -50,8 +50,8 @@ pub fn py_mat_type<'py>(_py: Python<'py>, py_vec: PyArray2Wrapper) -> PyResult<S
         IntSizePyArray2(_) => "int_size".to_string(),
         Flt32PyArray2(_) => "float32".to_string(),
         Flt64PyArray2(_) => "float64".to_string(),
-        Cplx32PyArray2(_) => "complex32".to_string(),
-        Cplx64PyArray2(_) => "complex64".to_string(),
+        // Cplx32PyArray2(_) => "complex32".to_string(),
+        // Cplx64PyArray2(_) => "complex64".to_string(),
     };
     Ok(t)
 }

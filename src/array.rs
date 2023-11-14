@@ -1,4 +1,4 @@
-use num_complex::{Complex32, Complex64};
+// use num_complex::{Complex32, Complex64};
 use numpy::{PyArray1, PyArray2};
 use pyo3::prelude::FromPyObject;
 
@@ -18,8 +18,8 @@ pub enum PyArray1Wrapper<'py> {
     IntSizePyArray1(&'py PyArray1<isize>),
     Flt32PyArray1(&'py PyArray1<f32>),
     Flt64PyArray1(&'py PyArray1<f64>),
-    Cplx32PyArray1(&'py PyArray1<Complex32>),
-    Cplx64PyArray1(&'py PyArray1<Complex64>),
+    // Cplx32PyArray1(&'py PyArray1<Complex32>),
+    // Cplx64PyArray1(&'py PyArray1<Complex64>),
 }
 
 /// Mapping numpy 2D array dtypes with some rust primary types
@@ -37,6 +37,6 @@ pub enum PyArray2Wrapper<'py> {
     IntSizePyArray2(&'py PyArray2<isize>),
     Flt32PyArray2(&'py PyArray2<f32>),
     Flt64PyArray2(&'py PyArray2<f64>),
-    Cplx32PyArray2(&'py PyArray2<Complex32>),
-    Cplx64PyArray2(&'py PyArray2<Complex64>),
+    // Cplx32PyArray2(&'py PyArray2<Complex32>),
+    // Cplx64PyArray2(&'py PyArray2<Complex64>),
 }

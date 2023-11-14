@@ -10,11 +10,10 @@ crate-type = ["rlib", "cdylib"]
 
 
 [dependencies]
-pyo3 = {version="0.20.0", features = ["extension-module", "num-complex"]}
+pyo3 = {version="0.20.0", features = ["extension-module"]}
 rayon = "1.7.0"
 numpy = "0.20.0"
 num = "0.4.0"
-num-complex = "0.4.3"
 
 
 [toolchain]
