@@ -1,11 +1,9 @@
-#![feature(portable_simd)]
-
 mod arithmetic;
 mod array;
 mod utils;
-use pyo3::prelude::{pymodule, PyModule, PyResult, Python};
 use crate::arithmetic::add_pyfunc;
 use crate::utils::{do_nothing, py_mat_type, py_vec_type};
+use pyo3::prelude::{pymodule, PyModule, PyResult, Python};
 use pyo3::wrap_pyfunction;
 
 #[pymodule]

@@ -35,6 +35,6 @@ def test_add():
     a1 = np.array([*range(100)], dtype=np.float64)
     a2 = np.array([*range(100)], dtype=np.float64)
 
-    add(a1, a2)
+    print(add(a1, a2))
     assert True
     # assert (a.to_numpy() == a1.to_numpy() + a2.to_numpy()).all()

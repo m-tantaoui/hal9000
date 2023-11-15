@@ -1,12 +1,7 @@
-use std::simd::{prelude::*, SimdElement};
-
 use crate::array::PyArray1Wrapper;
 use crate::array::PyArray1Wrapper::*;
 
-// use std::marker::Sync;
-
-// use num::ToPrimitive
-
+use num::ToPrimitive;
 use numpy::{Element, PyArray1};
 use pyo3::prelude::{pyfunction, IntoPy, PyObject, PyResult, Python};
 use rayon::prelude::*;
@@ -27,28 +22,23 @@ fn check_same_size(arr1_size: usize, arr2_size: usize) {
 //     todo!()
 // }
 
-fn add_pyfunc_wrapper<'py>(
+fn add_pyfunc_wrapper<'py, T1: Element + ToPrimitive + Sync, T2: Element + ToPrimitive + Sync>(
     py: Python<'py>,
-    arr1: &PyArray1<f64>,
-    arr2: &PyArray1<f64>,
+    arr1: &PyArray1<T1>,
+    arr2: &PyArray1<T2>,
 ) -> &'py PyArray1<f64> {
     check_same_size(arr1.len(), arr2.len());
 
     let arr1_slice = unsafe { arr1.as_slice().expect("Failed to extract numpy array") };
-    let (prefix_arr1, middle_arr1, suffix_arr1) = arr1_slice.as_simd::<32>();
-    println!(
-        "{:#?}\n {:#?}\n {:#?}",
-        prefix_arr1, middle_arr1, suffix_arr1
-    );
 
     let arr2_slice = unsafe { arr2.as_slice().expect("Failed to extract numpy array") };
-    let (prefix_arr2, middle_arr2, suffix_arr2) = arr2_slice.as_simd::<32>();
-    println!(
-        "{:#?}\n {:#?}\n {:#?}",
-        prefix_arr2, middle_arr2, suffix_arr2
-    );
 
-    return PyArray1::from_vec(py, vec![0.0; 12]);
+    let res: Vec<f64> = (0..arr1.len())
+        .into_par_iter()
+        .map(|i| arr1_slice[i].to_f64().unwrap() + arr2_slice[i].to_f64().unwrap())
+        .collect();
+
+    return PyArray1::from_vec(py, res);
 }
 
 #[pyfunction]
